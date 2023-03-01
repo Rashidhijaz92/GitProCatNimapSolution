@@ -1,0 +1,80 @@
+﻿@*@using PagedList;
+@using PagedList.Mvc;*@
+
+@model IEnumerable<ProCateNimapInfoTech.Models.Category>
+
+
+
+@{
+    ViewBag.Title = "Category List";
+}
+
+<h2>Details</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "CreateCat")
+</p>
+
+<table class="table" border="1">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.First().CategoryName)*@
+            @Html.DisplayNameFor(model => model.CategoryName)
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PK_CategoryId }, new { @class = "btn btn-primary" }) |
+
+            @Html.ActionLink("Delete", "Delete", "SimpleCatMasterCRUD", new { id = item.PK_CategoryId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+    }
+    @*<tr>
+        <td>
+            @foreach (var category in Model)
+            {
+                <div>@category.PK_CategoryId - @category.CategoryName</div>
+            }
+        </td>
+    </tr>*@
+
+    @*<tr>
+        <td>
+            @if (ViewBag.TotalPages > 1)
+            {
+                <div>
+                    @for (var i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        if (i == ViewBag.Page)
+                        {
+                            <span>@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Index", new { page = i, pageSize = ViewBag.PageSize })">@i</a>
+                        }
+                    }
+                </div>
+            }
+           
+        </td>
+    </tr>*@
+</table>
+
+
+@*@Html.PagedListPager(Model,i=>Url.Action("Details", "SimpleCatMasterCRUD",new  { i,search=Request.QueryString["search"]}))*@
+
+
+
+

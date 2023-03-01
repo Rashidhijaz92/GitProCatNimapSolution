@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProCateNimapInfoTech.Models.Product>
+
+@{
+    ViewBag.Title = "ProductDetails";
+}
+
+<h2>ProductDetails</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateProduct")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdctName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.category.PK_CategoryId)
+        </th>*@
+        <th>
+            @Html.Label("Action")
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdctName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.category.PK_CategoryId)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PK_ProductId }, new { @class = "btn btn-primary" }) |
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.PK_ProductId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+    }
+    
+</table>

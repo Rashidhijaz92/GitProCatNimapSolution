@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProCateNimapInfoTech.Models.Product>
+
+@{
+    ViewBag.Title = "prodDetail";
+}
+
+<h2>prodDetail</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdctName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdctName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PK_ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PK_ProductId })
+        </td>
+    </tr>
+}
+
+</table>
